@@ -1,0 +1,2 @@
+# luxminima.xyz
+Main website
