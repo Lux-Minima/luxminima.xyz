@@ -1,22 +1,33 @@
 <template>
   <div
-    class="absolute w-full min-h-screen mt-0 top-0 mono text-lg transition ease-in-out duration-700 text-black bg-white dark:text-white dark:bg-black"
+    :class="mode === 'light' ? 'bg-purple-500' : 'bg-black'"
+    class="absolute w-full min-h-screen mt-0 top-0 pixel transition ease-in-out duration-700"
     id="app"
-    ref="minima"
   >
     <div
-      class="m-0 top-0 right-0 rounded-lg"
+      :class="mode === 'light' ? 'text-gray-900' : 'text-gray-100'"
+      class="m-0 top-0 right-0 "
     >
       <div class="relative block w-full">
         <nav class="fixed col-span-1 px-4 hidden lg:block">
           <div
-            class="  mt-px ml-3 p-4 rounded-l-lg text-right"
+            :class="
+              mode === 'light'
+                ? 'text-purple-800 border-purple-700'
+                : 'text-red-700 border-red-700'
+            "
+            class="border-r-4 border-solid  mt-px ml-3 p-4  text-right"
           >
             <h3
-              class=" text-center  nav text-white bg-black px-2 pt-1 pb-3 robot" style="line-height:0.7rem"
+              class="text-sm text-center  nav border-transparent border-dashed border-l-4 hover:border-black"
             >
-              <span class="text-4xl">LUX</span><br>MINIMA
+              LUX<br />MINIMA
             </h3>
+            <p
+              class="text-xs pl-2 mt-3 pb-px  border-transparent border-dashed border-l-4 hover:border-black"
+            >
+              4Φ4
+            </p>
           </div>
           <div class="">
             <svg
@@ -28,67 +39,120 @@
                 d="M10 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
               />
             </svg>
-            <br>
+            <br />
             <router-link
               to="/"
+              :class="
+                mode === 'light'
+                  ? 'hover:text-purple-900'
+                  : 'hover:text-red-500'
+              "
             >
               <svg
-                class="inline-block h-6 w-6 ml-6 mr-2 my-3"
+                :class="mode === 'light' ? 'text-gray-900' : 'text-gray-600'"
+                class="fill-current inline-block h-6 w-6 ml-6 mr-2 my-3"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 164 164" stroke="currentColor"
+                viewBox="0 0 20 20"
               >
-                <path stroke-linecap="square" stroke-linejoin="arcs" stroke-width="15" d="M75,15 L75,15 L15,135 L135,135 L105,75 " />
-              </svg
-              ><span class="text-xxs hidden lg:inline">/lux</span>
+                <path
+                  d="M0 0h9v9H0V0zm2 2v5h5V2H2zm-2 9h9v9H0v-9zm2 2v5h5v-5H2zm9-13h9v9h-9V0zm2 2v5h5V2h-5zm-2 9h9v9h-9v-9zm2 2v5h5v-5h-5z"
+                /></svg
+              ><span class="text-xxs hidden lg:inline">.lux</span>
             </router-link>
-            <br>
+            <br />
             <router-link
-              to="/nox"
+              to="music"
+              :class="
+                mode === 'light'
+                  ? 'hover:text-purple-900'
+                  : 'hover:text-red-500'
+              "
             >
               <svg
-                class="inline-block h-6 w-6 ml-6 mr-2 my-3"
+                :class="mode === 'light' ? 'text-gray-900' : 'text-gray-600'"
+                class="fill-current  inline-block h-6 w-6 ml-6 mr-2 my-3"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 164 164" stroke="currentColor"
+                viewBox="0 0 20 20"
               >
-                <path stroke-linecap="square" stroke-linejoin="arcs" stroke-width="15" d="M75,15 A60,60 0 0,0 15,75 A60,60 0 0,0 75,135 A60,60 0 0,0 135,75 A60,60 0 0,0 75,15 L75,15 L75,135 " />
-              </svg
-              ><span class="text-xxs hidden lg:inline">/nox</span>
+                <path
+                  d="M16 17a3 3 0 0 1-3 3h-2a3 3 0 0 1 0-6h2a3 3 0 0 1 1 .17V1l6-1v4l-4 .67V17zM0 3h12v2H0V3zm0 4h12v2H0V7zm0 4h12v2H0v-2zm0 4h6v2H0v-2z"
+                /></svg
+              ><span class="text-xxs hidden lg:inline">.mp3</span>
             </router-link>
-            <br>
+            <br />
             <router-link
-              to="/usr"
+              to="log"
+              :class="
+                mode === 'light'
+                  ? 'hover:text-purple-900'
+                  : 'hover:text-red-500'
+              "
             >
               <svg
-                class="inline-block h-5 w-5 ml-6 mr-2 my-3"
+                :class="mode === 'light' ? 'text-gray-900' : 'text-gray-600'"
+                class="fill-current  inline-block h-6 w-6 ml-6 mr-2 my-3"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                viewBox="0 0 20 20"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg
-              ><span class="text-xxs hidden lg:inline">/usr</span>
+                <path d="M4 18h12V6h-4V2H4v16zm-2 1V0h12l4 4v16H2v-1z" /></svg
+              ><span class="text-xxs hidden lg:inline">.log</span>
             </router-link>
-            <br>
-            <!-- <router-link
-              to="/txt"
+            <br />
+            <router-link
+              to="arc"
+              :class="
+                mode === 'light'
+                  ? 'hover:text-purple-900'
+                  : 'hover:text-red-500'
+              "
             >
               <svg
-                class="inline-block h-5 w-5 ml-6 mr-2 my-3"
+                :class="mode === 'light' ? 'text-gray-900' : 'text-gray-600'"
+                class="fill-current  inline-block h-6 w-6 ml-6 mr-2 my-3"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                viewBox="0 0 20 20"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />              </svg
-              ><span class="text-xxs hidden lg:inline">/txt</span>
-            </router-link> -->
-
+                <path
+                  d="M6 4H5a1 1 0 1 1 0-2h11V1a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V5a1 1 0 0 0-1-1h-7v8l-2-2-2 2V4z"
+                /></svg
+              ><span class="text-xxs hidden lg:inline">.arc</span>
+            </router-link>
+            <br />
+            <router-link
+              to="usr"
+              :class="
+                mode === 'light'
+                  ? 'hover:text-purple-900'
+                  : 'hover:text-red-500'
+              "
+            >
+              <svg
+                :class="mode === 'light' ? 'text-gray-900' : 'text-gray-600'"
+                class="fill-current  inline-block h-6 w-6 ml-6 mr-2 my-3"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M12.26 11.74L10 14H8v2H6v2l-2 2H0v-4l8.26-8.26a6 6 0 1 1 4 4zm4.86-4.62A3 3 0 0 0 15 2a3 3 0 0 0-2.12.88l4.24 4.24z"
+                /></svg
+              ><span class="text-xxs hidden lg:inline">.usr</span>
+            </router-link>
+            <br />
+            <img
+              class="h-16 w-16 mx-auto my-8"
+              :src="require(`@/assets/luxmin.png`)"
+              alt=""
+            />
           </div>
         </nav>
         <nav
-
-          class="fixed block mx-12 my-5 right-0 bottom-0 rounded-lg lg:hidden z-50"
+          :class="mode === 'light' ? 'bg-purple-900' : 'bg-red-900'"
+          class="fixed block mx-12 my-5 right-0 bottom-0  lg:hidden z-50"
         >
           <router-link to="/">
             <svg
               @click="select(0)"
+              :class="selected === 0 ? 'text-black' : 'text-gray-600'"
               class="fill-current inline-block h-4 w-4 mx-3 my-3"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -98,10 +162,47 @@
               /></svg
             ><span class="text-xxs hidden lg:inline">menu</span>
           </router-link>
-          <router-link to="/usr">
+          <router-link to="music">
+            <svg
+              @click="select(3)"
+              :class="selected === 3 ? 'text-black' : 'text-gray-600'"
+              class="fill-current inline-block h-4 w-4 mx-3 my-3"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M16 17a3 3 0 0 1-3 3h-2a3 3 0 0 1 0-6h2a3 3 0 0 1 1 .17V1l6-1v4l-4 .67V17zM0 3h12v2H0V3zm0 4h12v2H0V7zm0 4h12v2H0v-2zm0 4h6v2H0v-2z"
+              /></svg
+            ><span class="text-xxs hidden lg:inline">mp3</span>
+          </router-link>
+          <router-link to="log">
+            <svg
+              @click="select(1)"
+              :class="selected === 1 ? 'text-black' : 'text-gray-600'"
+              class="fill-current inline-block h-4 w-4 mx-3 my-3"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M4 18h12V6h-4V2H4v16zm-2 1V0h12l4 4v16H2v-1z" /></svg
+            ><span class="text-xxs hidden lg:inline">log</span>
+          </router-link>
+          <router-link to="arc">
+            <svg
+              @click="select(5)"
+              :class="selected === 5 ? 'text-black' : 'text-gray-600'"
+              class="fill-current inline-block h-3 w-3 mx-3 my-3"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M6 4H5a1 1 0 1 1 0-2h11V1a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V5a1 1 0 0 0-1-1h-7v8l-2-2-2 2V4z"
+              /></svg
+            ><span class="text-xxs hidden lg:inline">arc</span>
+          </router-link>
+          <router-link to="usr">
             <svg
               @click="select(2)"
-
+              :class="selected === 2 ? 'text-black' : 'text-gray-600'"
               class="fill-current inline-block h-4 w-4 mx-3 my-3"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -113,41 +214,43 @@
           </router-link>
         </nav>
         <nav
-          class="fixed relative block mx-6 my-5 right-0 top-0 rounded-lg lg:mx-16 z-50 cursor-pointer"
+          class="fixed relative block mx-6 my-5 right-0 top-0  lg:mx-16 z-50 cursor-pointer"
         >
-          <svg
-           v-if="theme == 'light'"
-           @click="themeDark()"
-           xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 absolute right-0 text-black fill-current" viewBox="0 0 20 20" fill="currentColor"
-           >
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-          </svg>
-          <svg
-           v-if="theme == 'dark'"
-           @click="themeLight()"
-           xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 absolute right-0 text-white fill-current" viewBox="0 0 20 20" fill="currentColor"
-           >
-           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-          </svg>
-
-
+          <img
+            @click="selectMode('light')"
+            :class="mode === 'dark' ? 'opacity-100 z-50' : 'opacity-0 z-0'"
+            class="absolute right-0 h-8 my-3  transition ease-in-out duration-700"
+            :src="require(`@/assets/dark.png`)"
+            alt=""
+          />
+          <img
+            @click="selectMode('dark')"
+            :class="mode === 'light' ? 'opacity-100 z-50' : 'opacity-0 z-0'"
+            class="absolute right-0 h-8 my-3  rounded-full transition ease-in-out duration-700"
+            :src="require(`@/assets/light.png`)"
+            alt=""
+          />
         </nav>
         <div
-          class="hidden rounded-r-lg border-l-4 border-solid ml-2 my-5 lg:mr-10 lg:ml-40 lg:block"
+          :class="
+            mode === 'light'
+              ? 'bg-purple-600 border-purple-700'
+              : 'bg-black border-gray-700'
+          "
+          class="hidden  border-l-4 border-solid ml-2 mr-4 my-5 lg:mr-10 lg:ml-40 lg:block"
         >
-          <div class="">
+          <div class="shellCode">
             <p
-              id=""
-              class="pl-3 py-2 px-2  rounded-r-lg"
+              id="shellcodeOS"
+              :class="mode === 'light' ? 'bg-purple-600' : 'bg-gray-900'"
+              class="pl-3 py-5 px-5 text-xs pixel "
               contenteditable="false"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
-              </svg>
               <span
-                class=" rounded-lg shadow-2xl mono px-4 py-3"
+                :class="mode === 'light' ? 'bg-purple-800' : 'bg-gray-800'"
+                class="  shadow-2xl px-4 py-3"
               >
-                NOX TERMINAL
+                ShellcodeOS v.3
               </span>
             </p>
             <VueTerminal
@@ -158,8 +261,12 @@
           </div>
         </div>
         <router-view
-
-          class="rounded-r-lg border-l-4 border-solid ml-2 my-5 lg:mr-10 lg:ml-40"
+          :class="
+            mode === 'light'
+              ? 'bg-purple-200 border-purple-400'
+              : 'bg-gray-900 border-gray-700'
+          "
+          class=" border-l-4 border-solid ml-2 mr-4 my-5 lg:mr-10 lg:ml-40"
         />
       </div>
     </div>
@@ -167,7 +274,7 @@
 </template>
 <script>
 // @ is an alias to /src
-import "@/plugins/ptty.jquery.js";
+import "@/ptty.jquery.js";
 import $ from "jquery";
 import router from "@/router";
 //import ShellCode from "@/components/shell.vue";
@@ -179,28 +286,29 @@ export default {
     //ShellCode
     VueTerminal
   },
+
   data() {
     return {
       selected: 0,
-      theme: ""
+      mode: "dark",
+      user: null
     };
   },
   mounted() {
-
-    //theme setup
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-      this.theme = "dark";
+    var terminalUser = null;
+    if (this.$store.getters.getUserStatus) {
+      this.user = JSON.parse(this.$store.state.user);
+      terminalUser = this.user;
     } else {
-      document.documentElement.classList.remove("dark");
-      this.theme = "light";
+      terminalUser = null;
     }
 
-    //terminal
+    if (terminalUser === null) {
+      console.log("Guest");
+    } else if (terminalUser.app_metadata.role === undefined) {
+      terminalUser.app_metadata.role = "Guest";
+    }
+
     const commandEmitter = commandText => {
       let prms = new Promise((resolve, reject) => {
         var data = {
@@ -216,15 +324,12 @@ export default {
     var $ptty = $("#terminal", ".vue-terminal-wrapper").Ptty({
       i18n: {
         welcome:
-          'Type <b>help</b> to list the available commands.'
+          '<a class="font-semibold" href="https://gitlab.com/pachanka/ptty">Ptty</a> (0.0.5 beta).<br> Type <b>help</b> to list the available commands.'
       },
       ps: "Φ",
       allowArbitrary: this.allowArbitrary,
       passCommand: this.allowArbitrary ? commandEmitter : null
     });
-
-    //init Vue
-    let self = this
 
     //inside
     $ptty.register("command", {
@@ -235,52 +340,53 @@ export default {
       },
       help: "testing inside cmd"
     });
-    //version
+    //logged
+    $ptty.register("command", {
+      name: "usr",
+      method: function(cmd) {
+        if (terminalUser === null) {
+          cmd.out = "Not logged !";
+        } else {
+          if (terminalUser.app_metadata.role === undefined) {
+            terminalUser.app_metadata.role = "Guest";
+            cmd.out =
+              '<span class="font-bold">Username: </span>' +
+              terminalUser.user_metadata.full_name +
+              "</br>" +
+              '<span class="font-bold">Role: </span>' +
+              terminalUser.app_metadata.roles[0];
+          } else {
+            cmd.out =
+              '<span class="font-bold">Username: </span>' +
+              terminalUser.user_metadata.full_name +
+              "</br>" +
+              '<span class="font-bold">Role: </span>' +
+              terminalUser.app_metadata.roles[0];
+          }
+        }
+        return cmd;
+      },
+      help: "Logged ?"
+    });
+    //shellcode
     $ptty.register("command", {
       name: "version",
       method: function(cmd) {
         cmd.out =
-          '<span class="font-bold"><span class="text-gray-500">v0.0.5</span> Made with ❤ by lux.minima</span>';
+          '<span class="font-bold">Welcome to shellcode <span class="text-green-500">v.3</span></span><br>▫ New Design<br>▫ Auto Complete<br>▫ Command History<br>▫ <span class="text-green-500">VueJS</span>';
         return cmd;
       },
       help: "News, update and version."
     });
-    //cd
+    //ui
     $ptty.register("command", {
-      name: "cd",
+      name: ".ui",
       method: function(cmd) {
-        var dir = $ptty.get_command_option('last').split(' ');
-        dir.shift();
-        console.log(dir)
-        if(dir[0] === "lux"){
-            cmd.out = 'LUX'
-            //router.push("/");
-        }else if(dir[0] === "nox"){
-            cmd.out = 'NOX'
-        }else {
-          cmd.out = 'Incorrect directory ! Try <span class="bg-gray-800 py-1 px-2 rounded-lg">ls</span> to get a list of all directory'
-        }
+        router.push("/");
         //cmd.out = '...'
         return cmd;
       },
-      options: ['lux','nox','usr'],
-      help: "navigate to directory"
-    });
-    //theme
-    $ptty.register("command", {
-      name: "theme",
-      method: function(cmd) {
-        if($ptty.get_command_option('last') === "theme dark"){
-            self.themeDark()
-        }else if($ptty.get_command_option('last') === "theme light"){
-            self.themeLight()
-        }else{
-          cmd.out = 'Incorrect options ! Try <span class="bg-gray-800 py-1 px-2 rounded-lg">theme dark</span> or <span class="bg-gray-800 py-1 px-2 rounded-lg">theme light</span>'
-        }
-        //cmd.out = '...'
-        return cmd;
-      },
-      help: "options : dark & light"
+      help: "Open the User Interface."
     });
     //test
     $ptty.register("command", {
@@ -291,17 +397,26 @@ export default {
       },
       help: "testing router detection."
     });
-    //ls
+    //info
     $ptty.register("command", {
-      name: "ls",
+      name: ".inf",
       method: function(cmd) {
-        cmd.out = '<span class="text-gray-400">lux</span> <span class="text-gray-600">nox</span> <span class="text-green-600">usr</span>'
+        router.push("info");
+        //cmd.out = '...'
         return cmd;
       },
-      help: "show directory list"
+      help: "Open the Info Page."
     });
-
-
+    //log
+    $ptty.register("command", {
+      name: ".log",
+      method: function(cmd) {
+        router.push("log");
+        //cmd.out = '...'
+        return cmd;
+      },
+      help: "Open the Log Journal."
+    });
     /* portal
     $ptty.register('command', {
       name: 'portal',
@@ -313,19 +428,22 @@ export default {
       help: 'wip'
     }) */
     //music
+    $ptty.register("command", {
+      name: ".mp3",
+      method: function(cmd) {
+        //window.open('/music', '_blank');
+        window.open(
+          "/music",
+          "targetWindow",
+          "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=450,height=600"
+        );
+        cmd.out = "The music player is open ..";
+        return cmd;
+      },
+      help: "Open our custom playlist."
+    });
   },
   methods: {
-    // Theme action
-    themeLight() {
-      document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
-      this.theme = "light";
-    },
-    themeDark() {
-      document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
-      this.theme = "dark";
-    },
     select(i) {
       this.selected = i;
     },
@@ -340,11 +458,12 @@ export default {
 </script>
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+  background-color: black;
 }
 body::-webkit-scrollbar {
   width: 10px;
@@ -369,14 +488,11 @@ html {
   scrollbar-color: darkgray #fff0;
   scrollbar-width: thin;
 }
-.robot {
-  font-family: 'Roboto', sans-serif;
-}
-.mono {
-  font-family: "Courier New", 'Ubuntu Mono', monospace;
-}
 .pixel {
   font-family: "Press Start 2P", cursive;
+}
+.text-xxs {
+  font-size: 10px;
 }
 .vh-75 {
   min-height: 75vh;
@@ -466,10 +582,6 @@ html {
   animation: glitch 5s linear infinite;
   -webkit-animation-play-state: running;
   animation-play-state: running;
-}
-
-#terminal {
-  font-size: 1rem;
 }
 
 #terminal div.prompt div.input::before {
